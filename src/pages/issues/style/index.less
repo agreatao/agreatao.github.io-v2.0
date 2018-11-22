@@ -1,0 +1,74 @@
+.issues-page {
+    position: relative;
+    .issues-wrapper {
+        width: 800px;
+        margin: 0 auto;
+        padding: 20px 0;
+        .year {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 22px;
+            font-weight: 400;
+            color: #333;
+            padding: 0 25px;
+        }
+        .year-issue-wrapper {
+            display: inline-block;
+            vertical-align: top;
+            padding-top: 5px;
+            .year-issue-list {
+                margin-bottom: 15px;
+                .create-time {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-right: 40px;
+                    .day {
+                        font-size: 18px;
+                        font-weight: 400;
+                        padding: 0 5px 0 10px;
+                        color: #7b7b7b;
+                    }
+                    .month {
+                        font-size: 12px;
+                        font-weight: 400;
+                        padding: 0 5px 0 10px;
+                        color: #7b7b7b;
+                    }
+                    .time {
+                        margin-top: 5px;
+                        padding-left: 10px;
+                        color: #aaa;
+                    }
+                }
+                .issue-info {
+                    display: inline-block;
+                    vertical-align: top;
+                    border-bottom: 1px dotted #ddd;
+                    padding-bottom: 15px;
+                    .title {
+                        display: block;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 560px;
+                        font-size: 16px;
+                        color: #333;
+                        &:hover {
+                            color: #5e578e;
+                        }
+                    }
+                    .issue-other {
+                        margin-top: 15px;
+                        color: #bbb;
+                        &:after {
+                            display: block;
+                            clear: both;
+                            content: "";
+                            visibility: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
