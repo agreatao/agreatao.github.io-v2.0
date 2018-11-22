@@ -35,7 +35,7 @@ class Issues extends React.Component {
                 }
             }
         });
-        this.setState({ data: result });
+        this.setState({ data: [...result,...result,...result,...result,...result,...result,...result,...result,...result,...result] });
     }
     componentWillReceiveProps(nextProps) {
     }
@@ -45,7 +45,7 @@ class Issues extends React.Component {
         const { error } = issues;
         const { data } = this.state;
         return (
-            <div className="issues-page" style={{width, height}}>
+            <div className="issues-page">
                 <Link to="/home">home</Link>
                 <div className="issues-wrapper">
                     {

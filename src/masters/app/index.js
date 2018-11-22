@@ -8,7 +8,7 @@ class App extends React.Component {
         const { width, height } = this.props.browser;
         const { show } =this.props.bg;
         return (
-            <div className="app" style={{ width, height }}>
+            <div className="app">
                 <div className={"bg" + (show ? " show" : "")} />
                 {this.props.children}
             </div>
