@@ -1,27 +1,31 @@
 import React from 'react';
 
+import config from 'config';
+
 export const asyncComponent = (loadComponent, loadingComponent, loadData) => (
     class AsyncComponent extends React.Component {
         state = {
             Component: null
         }
-
         componentWillMount() {
             if (this.hasLoadedComponent()) {
                 return;
             }
+            document.title = config.titleLoad;
             loadComponent()
                 .then(module => module.default)
                 .then((Component) => {
                     if(loadData) {
                         loadData()
                             .then(data => {
+                                document.title = config.title;
                                 this.setState({Component});
                             })
                             .catch(error => {
                                 this.setState({Component});
                             })
                     } else {
+                        document.title = config.title;
                         this.setState({ Component });
                     }
                 })
