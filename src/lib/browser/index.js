@@ -46,6 +46,7 @@ var browsers = (function(window, { documentElement, body }) {
     }
 
     addEventListener(window, 'resize', throttle(onResize, 100, 500))
+    addEventListener(window, 'scroll', throttle(onScroll, 100, 500))
 })(window, document);
 
 export default browsers;

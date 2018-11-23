@@ -22,3 +22,33 @@
         }
     }
 }
+
+/* 设置滚动条的样式 */
+.app::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+}
+
+/* 滚动槽 */
+.app::-webkit-scrollbar-track {
+    border-radius: 3px;
+}
+
+/* 滚动条滑块 */
+.app::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #e5e5e5;
+    border: 2px solid transparent;
+}
+
+.app::-webkit-scrollbar-thumb:window-inactive {
+    background: #e5e5e5;
+}
+
+/* button */
+.app::-webkit-scrollbar-button {
+    background: transparent;
+    height: 0;
+    width: 0;
+}

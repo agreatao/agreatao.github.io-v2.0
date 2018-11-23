@@ -5,6 +5,9 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
+import { CircleNav } from 'components/nav';
+import { issues_nav } from 'config/nav';
+
 class Issues extends React.Component {
     constructor(props) {
         super(props);
@@ -35,9 +38,7 @@ class Issues extends React.Component {
                 }
             }
         });
-        this.setState({ data: [...result,...result,...result,...result,...result,...result,...result,...result,...result,...result] });
-    }
-    componentWillReceiveProps(nextProps) {
+        this.setState({ data: result });
     }
     render() {
         const { browser, issues } = this.props;
@@ -46,7 +47,7 @@ class Issues extends React.Component {
         const { data } = this.state;
         return (
             <div className="issues-page">
-                <Link to="/home">home</Link>
+                <CircleNav data={issues_nav} />
                 <div className="issues-wrapper">
                     {
                         data && !error ?
@@ -65,8 +66,8 @@ class Issues extends React.Component {
                                         <div className="issue-info">
                                             <Link to={`/issue/${issue.id}`} className="title">{issue.title}</Link>
                                             <div className="issue-other">
-                                                <span className="fl"><i className="fa fa-comments" /> {issue.comments}</span>
-                                                <span className="fr"><i className="fa fa-paperclip" /> {issue.label}</span>
+                                                <span className="fl comments"><i className="fa fa-comments" /> {issue.comments}</span>
+                                                <span className="fr label"><i className="fa fa-paperclip" /> {issue.label}</span>
                                             </div>
                                         </div>
                                     </div>)
@@ -77,6 +78,7 @@ class Issues extends React.Component {
                         <div className="issues-empty"></div>
                     }
                 </div>
+                <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
             </div>
         )
     }

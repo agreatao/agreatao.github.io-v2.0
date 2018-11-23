@@ -4,9 +4,9 @@ import React from 'react';
 
 class Avatar extends React.Component {
     render() {
-        const { active } = this.props;
+        const { active, className } = this.props;
         return (
-            <a onClick={this.props.onClick} className={"avatar" + (active ? " active" : "")}/>
+            <a onClick={this.props.onClick} className={"avatar" + (active ? " active" : "") + " " + className}/>
         )
     }
 }
