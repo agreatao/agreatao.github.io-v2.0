@@ -25,6 +25,8 @@ function createRouter() {
                 <Route exact path="home" component={Home} />
                 <Route exact path="issues" component={Issues} />
                 <Route exact path="issue/:id" component={Issue} />
+                <Route exact path="wechat" component={Home} />
+                <Route exact path="rss" component={Home} />
             </Route>
             <Route exact path="/" component={App2}>
                 <Route exact path="about" component={About} />

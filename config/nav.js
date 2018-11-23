@@ -76,5 +76,25 @@ module.exports = {
             icon: "user",
             to: "/about"
         }
+    ],
+    about_nav: [
+        {
+            tag: "link",
+            title: "主页",
+            icon: "home",
+            to: "/home"
+        },
+        {
+            tag: "link",
+            title: "归档",
+            icon: "code",
+            to: "/issues"
+        },
+        {
+            tag: "link",
+            title: "微信",
+            icon: "wechat",
+            to: "/wechat"
+        }
     ]
 };
