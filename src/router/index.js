@@ -8,6 +8,7 @@ import store from 'store';
 import { receiveIssues } from 'store/actions';
 
 import App from 'masters/app';
+import App2 from 'masters/app2';
 
 const { dispatch } = store;
 
@@ -24,6 +25,8 @@ function createRouter() {
                 <Route exact path="home" component={Home} />
                 <Route exact path="issues" component={Issues} />
                 <Route exact path="issue/:id" component={Issue} />
+            </Route>
+            <Route exact path="/" component={App2}>
                 <Route exact path="about" component={About} />
             </Route>
         </Router>

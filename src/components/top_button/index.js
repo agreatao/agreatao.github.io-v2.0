@@ -75,7 +75,7 @@ class TopButton extends React.Component {
             })
     }
     componentWillUnmount() {
-        this.windowScroll.remove();
+        this.appScroll && this.appScroll.remove();
     }
     onScrollTop() {
         this.setState({ run: true });

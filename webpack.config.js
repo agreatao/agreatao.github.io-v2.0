@@ -73,6 +73,15 @@ module.exports = {
                 }
             },
             {
+                test: /\.mp4$/,
+                exclude: /node_modules/,
+                loader: 'file-loader',
+                options: {
+                    limit: 2048,
+                    name: 'videos/[name].[ext]'
+                }
+            },
+            {
                 test: /\.json$/,
                 exclude: /node_modules/,
                 loader: 'json-loader'

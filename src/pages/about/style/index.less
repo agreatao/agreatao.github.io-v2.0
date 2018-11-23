@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqhPANqczVsq4A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqZPANqczVs.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Raleway'), local('Raleway-Regular'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyCMIT4ttDfCmxA.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Raleway'), local('Raleway-Regular'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqhPANqczVsq4A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    src: local('Raleway ExtraBold'), local('Raleway-ExtraBold'), url(http://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqZPANqczVs.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  
+
+.about-page {
+    .about-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        .about-box {
+            text-align: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility .2s ease-in-out, opacity .2s ease-in-out;
+            h4 {
+                font-family: 'Raleway', Arial, sans-serif;
+                text-transform: uppercase;
+                padding: 0 0 0.2em;
+                color: #fafafa;
+                font-weight: 800;
+                font-size: 60px;
+                margin: 0 auto;
+            }
+            p {
+                font-family: 'Raleway', Arial, sans-serif;
+                color: #f1f2f3;
+                padding: 0 0 0.6em;
+                font-weight: 400;
+                font-size: 24px;
+                margin: 0 auto;
+                span {
+                    color: #0d87e9;
+                }
+            }
+            .btns {
+                a + a {
+                    margin-left: 20px;
+                }
+            }
+            .home-btn {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                background: url("~images/home-o.png") no-repeat;
+            }
+            .video-play-btn {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                &.play {
+                    background: url("~images/play-icon.png") no-repeat;
+                }
+                &.pause {
+                    background: url("~images/pause-icon.png") no-repeat;
+                }
+            }
+            &.open {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        .about-detail-wrapper {
+            width: 600px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 9999;
+            overflow-x: hidden;
+            overflow-y: auto;
+            .about-detail {
+                margin-left: 600px;
+                transition: margin-left .3s ease-in-out;
+                padding: 40px 10px 10px 0;
+                .detail {
+                    height: 1000px;
+                    background: #fff;
+                    border-radius: 8px;
+                }
+            }
+            &.open {
+                .about-detail {
+                    margin-left: 0;
+                }
+            }
+        }
+        /* 设置滚动条的样式 */
+        .about-detail-wrapper::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+            background: transparent;
+        }
+
+        /* 滚动槽 */
+        .about-detail-wrapper::-webkit-scrollbar-track {
+            border-radius: 3px;
+        }
+
+        /* 滚动条滑块 */
+        .about-detail-wrapper::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background: #aaa;
+            border: 2px solid transparent;
+        }
+
+        .about-detail-wrapper::-webkit-scrollbar-thumb:window-inactive {
+            background: #aaa;
+        }
+
+        /* button */
+        .about-detail-wrapper::-webkit-scrollbar-button {
+            background: transparent;
+            height: 0;
+            width: 0;
+        }
+    }
+}
