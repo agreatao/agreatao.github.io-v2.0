@@ -66,8 +66,8 @@ class Issues extends React.Component {
                                         <div className="issue-info">
                                             <Link to={`/issue/${issue.id}`} className="title">{issue.title}</Link>
                                             <div className="issue-other">
-                                                <span className="fl comments"><i className="fa fa-comments" /> {issue.comments}</span>
-                                                <span className="fr label"><i className="fa fa-paperclip" /> {issue.label}</span>
+                                                <span className="fl"><i className="comments">{issue.comments}</i></span>
+                                                <span className="fr"><i className="label">{issue.label}</i></span>
                                             </div>
                                         </div>
                                     </div>)

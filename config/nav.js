@@ -22,7 +22,7 @@ module.exports = {
             tag: "a",
             title: "github",
             icon: "github",
-            to: "http://github.com"
+            to: "https://github.com/agreatao"
         },
         {
             tag: "link",
@@ -43,6 +43,26 @@ module.exports = {
             title: "返回",
             icon: "back",
             to: "/home"
+        },
+        {
+            tag: "link",
+            title: "主页",
+            icon: "home",
+            to: "/home"
+        },
+        {
+            tag: "link",
+            title: "关于",
+            icon: "user",
+            to: "/about"
+        }
+    ],
+    issue_nav: [
+        {
+            tag: "link",
+            title: "返回",
+            icon: "back",
+            to: "/issues"
         },
         {
             tag: "link",

@@ -37,4 +37,11 @@ a {
     float: right;
 }
 
+.clear:after {
+    display: block;
+    content: "";
+    clear: both;
+    visibility: hidden;
+}
+
 @import "./font-awesome/font-awesome.css";

@@ -13,6 +13,7 @@ const { dispatch } = store;
 
 const Home = asyncComponent(() => import("pages/home"), <Loading />);
 const Issues = asyncComponent(() => import("pages/issues"), <Loading />, () => dispatch(receiveIssues()));
+const Issue = asyncComponent(() => import("pages/issue"), <Loading />, () => dispatch(receiveIssues()));
 
 function createRouter() {
     return (
@@ -21,6 +22,7 @@ function createRouter() {
                 <IndexRedirect to="home" />
                 <Route exact path="home" component={Home} />
                 <Route exact path="issues" component={Issues} />
+                <Route exact path="issue/:id" component={Issue} />
             </Route>
         </Router>
     );

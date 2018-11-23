@@ -1,0 +1,102 @@
+.markdown-content {
+    display: block;
+    line-height: 1.8;
+    word-wrap: break-word;
+    color: #666;
+    &:before {
+        display: table;
+        content: "";
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 16px;
+        text-align: justify;
+    }
+    img {
+        display: inline-block;
+        max-width: 100%;
+    }
+    a {
+        color: #0366d6;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    strong {
+        color: #fc9b9b;
+        font-weight: 500;
+    }
+    p code {
+        display: inline-block;
+        background-color: rgba(27,31,35,.10);
+        border-radius: 3px;
+        margin: 0 2px;
+        padding: 2px 5px;
+        color: grey;
+        line-height: initial;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #333;
+        font-weight: 600;
+        margin-top: 18px;
+        margin-bottom: 12px;
+    }
+    h1 {
+        padding: 0 0 6px;
+        border-bottom: 1px solid #eeeeee;
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eeeeee;
+    }
+    blockquote {
+        margin: 0;
+        border-left: 0.25em solid #dfe2e5;
+        padding: 5px 10px 5px 0;
+        background: #fff;
+        margin-bottom: 16px;
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    blockquote p {
+        padding: 0 0 0 1em;
+        color: #6a737d;
+    }
+    blockquote ol {
+        padding: 0 0 0 1em;
+        color: #6a737d;
+    }
+    ul {
+        list-style: disc outside none;
+        padding-left: 2em;
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+    ol {
+        list-style: decimal outside none;
+        padding-left: 2em;
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+    pre code {
+        display: block;
+        background: #3f3f3f;
+        color: #fff;
+        margin-bottom: 16px;
+        padding: 10px 15px;
+        font-family: Menlo, Bitstream Vera Sans Mono, DejaVu Sans Mono, Monaco, Consolas, monospace;
+        font-size: 12px;
+        font-style: normal;
+        line-height: 1.5;
+        overflow: auto;
+        border-radius: 4px;
+    }
+}

@@ -8,6 +8,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require("./config");
 
+const HIGHLIGHT_JS = new ExtractTextWebpackPlugin({
+    filename: 'css/highlight.css',
+    allChunks: true
+})
+
 const DEFAULT_CSS = new ExtractTextWebpackPlugin({
     filename: 'css/default.css',
     allChunks: true
@@ -81,6 +86,26 @@ module.exports = {
             },
             {
                 test: /\.css$/,
+                include: /node_modules/,
+                loader: HIGHLIGHT_JS.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader'
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    require('autoprefixer')()
+                                ]
+                            }
+                        }
+                    ]
+                })
+            },
+            {
+                test: /\.css$/,
                 exclude: /node_modules/,
                 loader: DEFAULT_CSS.extract({
                     fallback: 'style-loader',
@@ -151,6 +176,7 @@ module.exports = {
                 collapseWhitespace: true
             } : false
         }),
+        HIGHLIGHT_JS,
         DEFAULT_CSS,
         PROJECT_LESS
     ].concat(NODE_ENV == 'production' ? [
