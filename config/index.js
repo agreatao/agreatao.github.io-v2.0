@@ -7,6 +7,6 @@ const config = {
 
 module.exports = {
     ...config,
-    // request: `https://api.github.com/repos/${config.owner}/${config.repo}`
-    request: 'http://localhost:8800'
+    request: `https://api.github.com/repos/${config.owner}/${config.repo}`
+    // request: 'http://localhost:8800'
 };
