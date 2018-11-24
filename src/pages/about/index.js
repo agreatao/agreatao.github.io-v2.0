@@ -10,6 +10,7 @@ import addEventListener from 'add-dom-event-listener';
 import Video from 'components/video';
 import { AboutNav } from 'components/nav';
 import { about_nav } from 'config/nav';
+import { scroll } from 'lib/utils';
 
 class About extends React.Component {
     constructor(props) {
@@ -43,6 +44,11 @@ class About extends React.Component {
             play: false
         })
     }
+    handleViewMore() {
+        scroll({
+            targetPositionY: 30
+        },this.refs.detail);
+    }
     render() {
         const { browser } = this.props;
         const { width, height } = browser;
@@ -51,15 +57,23 @@ class About extends React.Component {
             <div className="about-page" style={{width, height}}>
                 <Video play={play} onPlayEnd={::this.onPlayEnd} />
                 <div className="about-wrapper">
-                    <div className={"about-box" + (!detailOpen ? " open" : "")} style={{ marginTop: (height - 160) / 2}}>
+                    <div className={"about-box" + (!detailOpen ? " open" : "")} style={{ height, paddingTop: (height - 160) / 2}}>
                         <h4>AO XU</h4>
                         <p>I'm <span>Web</span> Developer</p>
                         <div className="btns">
                             <Link className="home-btn" to="/home"></Link>
                             <a onClick={::this.handleVideoToggle} className={"video-play-btn" + (play ? " pause" : " play")}></a>
                         </div>
+                        {
+                            height < 1050 &&
+                            <a className="view-more" onClick={::this.handleViewMore}>
+                                <i className="icon-arrow-down" />
+                                <span>view more</span>
+                            </a>
+                        }
+                        
                     </div>
-                    <div ref="detail" className={"about-detail-wrapper" + (detailOpen ? " open" : "")} style={{ height }}>
+                    <div ref="detail" className={"about-detail-wrapper" + (detailOpen || (height >= 1050) ? " open" : "")} style={{ height }}>
                         <div className="about-detail">
                             <div className="detail">
                                 <h1>AO XU</h1>

@@ -35,16 +35,10 @@ class Video extends React.Component {
         return (
             <div className={"video" + (isPlay ? " play" : "")}>
                 <video
+                    className="video-tag"
                     ref="play"
                     autoPlay
                     muted
-                    style={{
-                        width: (height / 3) * 5.33,
-                        height,
-                        position: "absolute",
-                        top: 0,
-                        left: 0
-                    }}
                 >
                     <source src={play} type="video/mp4" />
                 </video>

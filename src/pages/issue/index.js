@@ -11,7 +11,6 @@ import marked from 'lib/markdown';
 class Issue extends React.Component {
     render() {
         const issue = this.props.issues.data[this.props.params.id];
-        console.log(issue);
         return (
             <div className="issue-page">
                 <CircleNav data={issue_nav} />

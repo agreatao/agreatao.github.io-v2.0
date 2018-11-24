@@ -14,27 +14,9 @@ module.exports = {
         },
         {
             tag: "a",
-            title: "instagram",
-            icon: "instagram",
-            to: "http://instagram.com"
-        },
-        {
-            tag: "a",
             title: "github",
             icon: "github",
             to: "https://github.com/agreatao"
-        },
-        {
-            tag: "link",
-            title: "微信",
-            icon: "wechat",
-            to: "/wechat"
-        },
-        {
-            tag: "link",
-            title: "订阅",
-            icon: "rss",
-            to: "/rss"
         }
     ],
     issues_nav: [
@@ -89,12 +71,6 @@ module.exports = {
             title: "归档",
             icon: "code",
             to: "/issues"
-        },
-        {
-            tag: "link",
-            title: "微信",
-            icon: "wechat",
-            to: "/wechat"
         }
     ]
 };
