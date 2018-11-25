@@ -32,6 +32,7 @@ class Video extends React.Component {
         const { browser } = this.props;
         const { width, height } = browser;
         const { isPlay } = this.state;
+        let scale  = Math.max(width / 1920, height / 1080);
         return (
             <div className={"video" + (isPlay ? " play" : "")}>
                 <video
@@ -39,8 +40,9 @@ class Video extends React.Component {
                     ref="play"
                     autoPlay
                     muted
+                    style={{width: 1920 * scale, height: 1080 * scale}}
                 >
-                    <source src={play} type="video/mp4" />
+                    <source src={play} type="video/mp4"  style={{width, height}}/>
                 </video>
                 <div
                     className="video-bg"
