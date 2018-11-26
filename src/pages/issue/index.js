@@ -10,7 +10,8 @@ import marked from 'lib/markdown';
 
 class Issue extends React.Component {
     render() {
-        const issue = this.props.issues.data[this.props.params.id];
+        const { data, error } = this.props.issues;
+        const issue = data && data[this.props.params.id];
         return (
             <div className="issue-page">
                 <CircleNav data={issue_nav} />
@@ -42,7 +43,9 @@ class Issue extends React.Component {
                         </div>
                     </div>
                     :
-                    null
+                    <div className="issue-wrapper">
+                        <p className="error">{error}</p>
+                    </div>
                 }
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
             </div>

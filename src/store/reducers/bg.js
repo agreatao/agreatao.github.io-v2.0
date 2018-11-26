@@ -1,7 +1,7 @@
 import { BG_HIDE, BG_SHOW } from '../actionTypes';
 
 export default function browser(state = {
-    show: false
+    show: true
 }, { type }) {
     switch(type) {
         case BG_SHOW: return { show: true };

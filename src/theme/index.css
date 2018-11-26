@@ -20,8 +20,7 @@ body {
 
 div[data-reactroot] {
     height: 100%;
-    overflow: auto;
-    background: #f6f6f6;
+    background: #fff;
 }
 
 textarea {
@@ -48,7 +47,16 @@ a {
     visibility: hidden;
 }
 
+.copyright {
+    text-align: center;
+    color: #7b7b7b;
+    user-select: none;
+    width: 100%;
+}
 
+.app.show .copyright {
+    color: #eaeaea;
+}
 
 /* @import "./font-awesome/font-awesome.css"; */
 @import "./raleway//raleway.css";

@@ -1,9 +1,7 @@
 .issues-page {
     position: relative;
     .copyright {
-        text-align: center;
-        color: #7b7b7b;
-        user-select: none;
+        margin-bottom: 20px;
     }
     .issues-wrapper {
         width: 800px;
@@ -12,100 +10,106 @@
         padding: 16px 0;
         border-radius: 8px;
         cursor: default;
-        .year {
-            display: inline-block;
-            vertical-align: top;
-            font-size: 22px;
-            font-weight: 400;
-            color: #333;
-            padding: 0 25px;
+        .issues-empty {
+            color: #ef7c1e;
+            text-align: center;
+            font-size: 16px;
         }
-        .year-issue-wrapper {
-            display: inline-block;
-            vertical-align: top;
-            padding-top: 5px;
-            .year-issue-list {
-                margin-bottom: 15px;
-                .create-time {
-                    display: inline-block;
-                    vertical-align: top;
-                    margin-right: 40px;
-                    .day {
-                        font-size: 18px;
-                        font-weight: 400;
-                        padding: 0 5px 0 10px;
-                        color: #ef7c1e;
-                        
-                    }
-                    .month {
-                        font-size: 12px;
-                        font-weight: 400;
-                        padding: 0 5px 0 10px;
-                        color: #7b7b7b;
-                    }
-                    .time {
-                        margin-top: 5px;
-                        padding-left: 20px;
-                        color: #aaa;
-                    }
-                }
-                .issue-info {
-                    display: inline-block;
-                    vertical-align: top;
-                    border-bottom: 1px dotted #ddd;
-                    padding-bottom: 15px;
-                    .title {
-                        display: block;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        width: 550px;
-                        font-size: 16px;
-                        color: #333;
-                        cursor: pointer;
-                        border-left: 3px solid transparent;
-                        padding-left: 5px;
-                        transition: all .3s ease-in-out;
-                        &:hover {
-                            border-left: 3px solid #ef7c1e;
+        .year-list {
+            .year {
+                display: inline-block;
+                vertical-align: top;
+                font-size: 22px;
+                font-weight: 400;
+                color: #333;
+                padding: 0 25px;
+            }
+            .year-issue-wrapper {
+                display: inline-block;
+                vertical-align: top;
+                padding-top: 5px;
+                .year-issue-list {
+                    margin-bottom: 15px;
+                    .create-time {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin-right: 40px;
+                        .day {
+                            font-size: 18px;
+                            font-weight: 400;
+                            padding: 0 5px 0 10px;
                             color: #ef7c1e;
                         }
+                        .month {
+                            font-size: 12px;
+                            font-weight: 400;
+                            padding: 0 5px 0 10px;
+                            color: #7b7b7b;
+                        }
+                        .time {
+                            margin-top: 5px;
+                            padding-left: 20px;
+                            color: #aaa;
+                        }
                     }
-                    .issue-other {
-                        margin-top: 15px;
-                        color: #bbb;
-                        .comments {
-                            display: inline-block;
-                            height: 16px;
-                            background: url("~images/comments.png") no-repeat;
-                            padding-left: 20px;
-                            font-style: normal;
-                            &:hover {
-                                background: url("~images/comments-hover.png") no-repeat;
-                                color: #7b7b7b;
-                            }
-                        }
-                        .label {
-                            display: inline-block;
-                            height: 16px;
-                            background: url("~images/paperclip.png") no-repeat;
-                            padding-left: 20px;
-                            font-style: normal;
-                            &:hover {
-                                background: url("~images/paperclip-hover.png") no-repeat;
-                                color: #7b7b7b;
-                            }
-                        }
-                        .label {
-                            &:hover {
-                                color: #7b7b7b;
-                            }
-                        }
-                        &:after {
+                    .issue-info {
+                        display: inline-block;
+                        vertical-align: top;
+                        border-bottom: 1px dotted #ddd;
+                        padding-bottom: 15px;
+                        .title {
                             display: block;
-                            clear: both;
-                            content: "";
-                            visibility: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            width: 550px;
+                            font-size: 16px;
+                            color: #333;
+                            cursor: pointer;
+                            border-left: 3px solid transparent;
+                            padding-left: 5px;
+                            transition: all .3s ease-in-out;
+                            &:hover {
+                                border-left: 3px solid #ef7c1e;
+                                color: #ef7c1e;
+                            }
+                        }
+                        .issue-other {
+                            margin-top: 15px;
+                            color: #bbb;
+                            .comments {
+                                display: inline-block;
+                                height: 16px;
+                                background: url("~images/comments.png") no-repeat;
+                                padding-left: 20px;
+                                font-style: normal;
+                                &:hover {
+                                    background: url("~images/comments-hover.png") no-repeat;
+                                    color: #7b7b7b;
+                                }
+                            }
+                            .label {
+                                display: inline-block;
+                                height: 16px;
+                                background: url("~images/paperclip.png") no-repeat;
+                                padding-left: 20px;
+                                font-style: normal;
+                                &:hover {
+                                    background: url("~images/paperclip-hover.png") no-repeat;
+                                    color: #7b7b7b;
+                                }
+                            }
+                            .label {
+                                &:hover {
+                                    color: #7b7b7b;
+                                }
+                            }
+                            &:after {
+                                display: block;
+                                clear: both;
+                                content: "";
+                                visibility: hidden;
+                            }
                         }
                     }
                 }

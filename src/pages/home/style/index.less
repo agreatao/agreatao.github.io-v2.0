@@ -3,29 +3,24 @@
     .main-wrapper {
         .avatar-wrapper {
             text-align: center;
-            animation: head 1s ease-in-out;
+            animation: avatar 1s ease-in-out;
             animation-fill-mode: both;
         }
         .nav-wrapper {
             margin-top: 40px;
             text-align: center;
-            animation: link 1s ease-in-out 1s;
+            animation: links 1s ease-in-out 1s;
             animation-fill-mode: both;
         }
     }
     .copyright {
         position: absolute;
         bottom: 10px;
-        top: auto;
         left: 0;
-        right: 0;
-        text-align: center;
-        color: #7b7b7b;
-        user-select: none;
     }
 }
 
-@keyframes head {
+@keyframes avatar {
     0% {
         opacity: 0;
         transform: translate3d(0, -10%, 0);
@@ -36,7 +31,7 @@
     }
 }
 
-@keyframes link {
+@keyframes links {
     0% {
         opacity: 0;
         transform: translate3d(0, 10%, 0);
@@ -44,11 +39,5 @@
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes dash {
-    to {
-        stroke-dashoffset: 0;
     }
 }

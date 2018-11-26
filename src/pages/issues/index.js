@@ -18,7 +18,7 @@ class Issues extends React.Component {
     componentDidMount() {
         const { data } = this.props.issues;
         let result = [];
-        let each = { year: moment(data[0].created_at).format("YYYY"), list: [] };
+        let each = { year: data && data[0] && moment(data[0].created_at).format("YYYY"), list: [] };
         data && data.forEach((item, index) => {
             let issue = {
                 title: item.title,
@@ -75,7 +75,9 @@ class Issues extends React.Component {
                             </div>
                         </div>)
                         :
-                        <div className="issues-empty"></div>
+                        <div className="issues-empty">
+                            <p>{error}</p>
+                        </div>
                     }
                 </div>
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
