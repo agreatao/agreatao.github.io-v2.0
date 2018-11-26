@@ -46,7 +46,7 @@ class Issue extends React.Component {
                         <div className="issue-control clear">
                             <div className="fl">
                                 {
-                                    parseInt(id, 10) <= (data.length - 1) &&
+                                    parseInt(id, 10) < (data.length - 1) &&
                                     <Link to={`/issue/${parseInt(id, 10) + 1}`}>上一篇</Link>
                                 }
                             </div>
