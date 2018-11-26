@@ -22,7 +22,7 @@ class Issue extends React.Component {
                             <div className="issue-title">{issue.title}</div>
                             <div className="issue-others clear">
                                 <div className="fl">
-                                    <div className="calendar">{moment(issue.create_at).format("YYYY-MM-DD")}</div>
+                                    <div className="calendar">{moment(issue.created_at).format("YYYY-MM-DD HH:mm:ss")}</div>
                                     <div className="label">{issue.labels[0].name}</div>
                                 </div>
                                 <div className="fr">
