@@ -98,6 +98,27 @@
             line-height: 1.45;
             overflow: auto;
             padding: 16px;
+            &::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+                background: transparent;
+            }
+            &::-webkit-scrollbar-track {
+                border-radius: 3px;
+            }
+            &::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                background: #333;
+                border: 2px solid transparent;
+            }
+            &::-webkit-scrollbar-thumb:window-inactive {
+                background: #333;
+            }
+            &::-webkit-scrollbar-button {
+                background: transparent;
+                height: 0;
+                width: 0;
+            }
             .hljs-comment {
                 font-style: normal;
             }
