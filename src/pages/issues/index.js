@@ -64,7 +64,7 @@ class Issues extends React.Component {
                                             <div className="time">{issue.createTime.format("HH:mm:ss")}</div>
                                         </div>
                                         <div className="issue-info">
-                                            <Link to={`/issue/${issue.id}`} className="title">{issue.title}</Link>
+                                            <Link to={`/issue/${issue.id}`} title={issue.title} className="title">{issue.title}</Link>
                                             <div className="issue-other">
                                                 <span className="fl"><i className="comments">{issue.comments}</i></span>
                                                 <span className="fr"><i className="label">{issue.label}</i></span>

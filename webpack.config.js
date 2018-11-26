@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+// const SpritesmithPlugin = require('webpack-spritesmith');
 const config = require("./config");
 
 const HIGHLIGHT_JS = new ExtractTextWebpackPlugin({
@@ -28,7 +29,8 @@ module.exports = {
     entry: {
         vendor: ['react', 'react-dom', 'redux', 'react-redux',
             'react-router', 'redux-thunk', 'autoprefixer',
-            'add-dom-event-listener', 'moment', 'axios'],
+            'add-dom-event-listener', 'moment', 'axios', 'nprogress'],
+        config: path.join(__dirname, 'config'),
         main: ['babel-polyfill', path.join(__dirname, 'src/entry')]
     },
     output: {
@@ -179,12 +181,30 @@ module.exports = {
             filename: 'index.html',
             favicon: path.join(__dirname, 'src/views/favicon.ico'),
             inject: true,
-            chunks: ['runtime', 'vendor', 'main'],
+            chunks: ['runtime', 'vendor', 'config', 'main'],
             minify: NODE_ENV == 'production' ? {
                 removeAttributeQuotes: true,
                 collapseWhitespace: true
             } : false
         }),
+        // 雪碧图制作插件
+        // new SpritesmithPlugin({
+        //     src: {
+        //         cwd: path.resolve(__dirname, './src/images/icons'),
+        //         glob: '*.png'
+        //     },
+        //     target: {
+        //         image: path.resolve(__dirname, './dist/images/sprite.png'),
+        //         css: path.resolve(__dirname, './dist/css/sprite.css')
+        //     },
+        //     // 样式文件中调用雪碧图地址写法
+        //     apiOptions: {
+        //         cssImageRef: '/images/sprite.png'
+        //     },
+        //     spritesmithOptions: {
+        //         algorithm: 'top-down'
+        //     }
+        // }),
         HIGHLIGHT_JS,
         DEFAULT_CSS,
         PROJECT_LESS

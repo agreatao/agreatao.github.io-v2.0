@@ -1,6 +1,7 @@
 import React from 'react';
 
 import config from 'config';
+import Nprogress from 'nprogress';
 
 export const asyncComponent = (loadComponent, loadingComponent, loadData) => (
     class AsyncComponent extends React.Component {
@@ -12,6 +13,7 @@ export const asyncComponent = (loadComponent, loadingComponent, loadData) => (
                 return;
             }
             document.title = config.titleLoad;
+            Nprogress.start();
             loadComponent()
                 .then(module => module.default)
                 .then((Component) => {
@@ -19,13 +21,16 @@ export const asyncComponent = (loadComponent, loadingComponent, loadData) => (
                         loadData()
                             .then(data => {
                                 document.title = config.title;
+                                Nprogress.done();
                                 this.setState({Component});
                             })
                             .catch(error => {
+                                Nprogress.done();
                                 this.setState({Component});
                             })
                     } else {
                         document.title = config.title;
+                        Nprogress.done();
                         this.setState({ Component });
                     }
                 })

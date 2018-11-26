@@ -8,6 +8,7 @@ import {
 } from '../actionTypes';
 
 import http from 'lib/http';
+import config from 'config';
 
 export const browserResize = payload => ({ type: BROWSER_RESIZE, payload });
 export const browserScroll = payload => ({ type: BROWSER_SCROLL, payload });
@@ -17,7 +18,7 @@ export const getIssuesError = payload => ({ type: GET_ISSUES_ERROR, payload });
 export const receiveIssues = () => (dispatch, getState) => {
     let state = getState();
     if(!state || !state.issues || !state.issues.data || !state.issues.data.length) {
-        return http.get("/issues")
+        return http.get(`/issues?creator=${config.owner}&per_page=1000&access_token=${config.token}`)
             .then(result => {
                 dispatch(getIssues({data: result}));
                 return result;
