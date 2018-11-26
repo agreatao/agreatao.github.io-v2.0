@@ -24,7 +24,7 @@ class Issues extends React.Component {
                 title: item.title,
                 createTime: moment(item.created_at),
                 updateTime: moment(item.updated_at),
-                label: item.labels[0].name,
+                label: item.labels && item.labels[0] && item.labels[0].name,
                 comments: item.comments,
                 id: index
             };
@@ -37,7 +37,7 @@ class Issues extends React.Component {
                     result.push(each);
                 }
             }
-        });
+        }); 
         this.setState({ data: result });
     }
     render() {
@@ -67,7 +67,10 @@ class Issues extends React.Component {
                                             <Link to={`/issue/${issue.id}`} title={issue.title} className="title">{issue.title}</Link>
                                             <div className="issue-other">
                                                 <span className="fl"><i className="comments">{issue.comments}</i></span>
-                                                <span className="fr"><i className="label">{issue.label}</i></span>
+                                                {
+                                                    issue.label &&
+                                                    <span className="fr"><i className="label">{issue.label}</i></span>
+                                                }
                                             </div>
                                         </div>
                                     </div>)
