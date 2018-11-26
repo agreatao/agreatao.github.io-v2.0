@@ -1,102 +1,112 @@
 .markdown-content {
     display: block;
-    line-height: 1.8;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-size: 14px;
+    line-height: 1.5;
     word-wrap: break-word;
-    color: #666;
+    color: #24292e;
     &:before {
         display: table;
         content: "";
     }
-    p {
-        margin-top: 0;
+    blockquote, dl, ol, p, pre, table, ul {
         margin-bottom: 16px;
+        margin-top: 0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        margin-top: 24px;
+        code, tt {
+            font-size: inherit;
+        }
+    }
+    h1, h2 {
+        border-bottom: 1px solid #eaecef;
+        padding-bottom: .3em;
+    }
+    ol, ul {
+        padding-left: 2em;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+    ul {
+        list-style-type: disc;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.25em;
+    }
+    h4 {
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        margin-top: 24px;
+        font-size: 1em;
+    }
+    h5 {
+        font-size: .875em;
+    }
+    h6 {
+        color: #6a737d;
+        font-size: .85em;
+    }
+    code, pre, tt {
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    b, strong {
+        font-weight: 600;
+    }
+    p {
         text-align: justify;
     }
     img {
         display: inline-block;
         max-width: 100%;
     }
+    blockquote {
+        border-left: .25em solid #dfe2e5;
+        color: #6a737d;
+        padding: 0 1em;
+    }
     a {
         color: #0366d6;
     }
-    a:hover {
-        text-decoration: underline;
-    }
-    strong {
-        color: #fc9b9b;
-        font-weight: 500;
-    }
-    p code {
-        display: inline-block;
-        background-color: rgba(27,31,35,.10);
-        border-radius: 3px;
-        margin: 0 2px;
-        padding: 2px 5px;
-        color: grey;
-        line-height: initial;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        color: #333;
-        font-weight: 600;
-        margin-top: 18px;
-        margin-bottom: 12px;
-    }
-    h1 {
-        padding: 0 0 6px;
-        border-bottom: 1px solid #eeeeee;
-        font-size: 20px;
-    }
-    h2 {
-        font-size: 18px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eeeeee;
-    }
-    blockquote {
-        margin: 0;
-        border-left: 0.25em solid #dfe2e5;
-        padding: 5px 10px 5px 0;
-        background: #fff;
+    .highlight {
+        background-color: initial;
+        overflow: visible!important;
         margin-bottom: 16px;
-        p:last-child {
+        pre {
+            word-wrap: normal;
             margin-bottom: 0;
+            word-break: normal;
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            .hljs-comment {
+                font-style: normal;
+            }
+            .hljs-keyword {
+                color: #d73a49;
+            }
+            .hljs-string {
+                color: #a5c261;
+            }
         }
-    }
-    blockquote p {
-        padding: 0 0 0 1em;
-        color: #6a737d;
-    }
-    blockquote ol {
-        padding: 0 0 0 1em;
-        color: #6a737d;
-    }
-    ul {
-        list-style: disc outside none;
-        padding-left: 2em;
-        margin-bottom: 16px;
-        font-size: 14px;
-    }
-    ol {
-        list-style: decimal outside none;
-        padding-left: 2em;
-        margin-bottom: 16px;
-        font-size: 14px;
-    }
-    pre code {
-        display: block;
-        background: #3f3f3f;
-        color: #fff;
-        margin-bottom: 16px;
-        padding: 10px 15px;
-        font-family: Menlo, Bitstream Vera Sans Mono, DejaVu Sans Mono, Monaco, Consolas, monospace;
-        font-size: 12px;
-        font-style: normal;
-        line-height: 1.5;
-        overflow: auto;
-        border-radius: 4px;
     }
 }

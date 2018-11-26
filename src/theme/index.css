@@ -20,7 +20,7 @@ body {
 
 div[data-reactroot] {
     height: 100%;
-    background: #fff;
+    background: #f6f6f6;
 }
 
 textarea {
