@@ -17,6 +17,9 @@ class App extends React.Component {
             targetRef: this.refs.app
         })
     }
+    componentWillReceiveProps(nextProps) {
+        this.refs.app.scrollTo(0, 0);
+    }
     render() {
         const { width, height } = this.props.browser;
         const { show } =this.props.bg;

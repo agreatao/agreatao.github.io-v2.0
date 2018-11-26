@@ -2,6 +2,7 @@ import "./style/index.less";
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import moment from 'moment';
 
 import { CircleNav } from 'components/nav';
@@ -11,7 +12,8 @@ import marked from 'lib/markdown';
 class Issue extends React.Component {
     render() {
         const { data, error } = this.props.issues;
-        const issue = data && data[this.props.params.id];
+        const { id } = this.props.params;
+        const issue = data && data[id];
         return (
             <div className="issue-page">
                 <CircleNav data={issue_nav} />
@@ -39,6 +41,20 @@ class Issue extends React.Component {
                             </div>
                             <div className="fr">
                                 <a className="comments-a" href={issue.html_url + '/#new_comment_field'} target="_blank">评论</a>
+                            </div>
+                        </div>
+                        <div className="issue-control clear">
+                            <div className="fl">
+                                {
+                                    parseInt(id, 10) <= (data.length - 1) &&
+                                    <Link to={`/issue/${parseInt(id, 10) + 1}`}>上一篇</Link>
+                                }
+                            </div>
+                            <div className="fr">
+                                {
+                                    parseInt(id, 10) > 0 &&
+                                    <Link to={`/issue/${parseInt(id, 10) - 1}`}>下一篇</Link>
+                                }
                             </div>
                         </div>
                     </div>
