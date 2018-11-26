@@ -7,7 +7,7 @@ class Avatar extends React.Component {
         let { active, className, length } = this.props;
         length = length || 100;
         let [width, height] = [length || 100, length || 100];
-        let fontSize = length >= 100 ? 22 : 16;
+        let fontSize = length >= 100 ? 22 : 14;
         let borderWidth = length >= 100 ? 1.5 : 1;
         return (
             <a onClick={this.props.onClick} className={"avatar" + (active ? " active" : "") + " " + (className || "")} style={{width, height, borderWidth}}>
