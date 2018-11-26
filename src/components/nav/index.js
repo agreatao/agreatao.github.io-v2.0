@@ -4,31 +4,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
 
-import { home_nav } from 'config/nav';
-
 import Avatar from 'components/avatar';
-
-export class HomeNav extends React.Component {
-    render() {
-        return (
-            <div className="home-nav">
-                {
-                    home_nav.map((item, index) => {
-                        if (item.tag == 'a') {
-                            return <NavItemA {...item} key={index} />
-                        }
-                        else if (item.tag == 'link') {
-                            return <NavItemLink {...item} key={index} />
-                        }
-                        else {
-                            return null;
-                        }
-                    })
-                }
-            </div>
-        )
-    }
-}
 
 class NavItemLink extends React.Component {
     render() {
@@ -89,7 +65,7 @@ export class CircleNavConnect extends React.Component {
                             }
                         })
                     }
-                    <Avatar active={bg.show} onClick={::this.onBgToggle} className={"menu-" + ((data && data.length || 0) + 1)} />
+                    <Avatar length={34} active={bg.show} onClick={::this.onBgToggle} className={"menu-" + ((data && data.length || 0) + 1)} />
                 </div>
             </div>
         )
@@ -102,6 +78,30 @@ export const CircleNav = connect(
     state => ({ bg: state.bg }),
     (dispatch) => ({ bgToggle: () => dispatch(bgToggle()) })
 )(CircleNavConnect);
+
+
+export class HomeNav extends React.Component {
+    render() {
+        const { data } = this.props;
+        return (
+            <div className="home-nav">
+                {
+                    data && data.map((item, index) => {
+                        if (item.tag == 'a') {
+                            return <NavItemA {...item} key={index} />
+                        }
+                        else if (item.tag == 'link') {
+                            return <NavItemLink {...item} key={index} />
+                        }
+                        else {
+                            return null;
+                        }
+                    })
+                }
+            </div>
+        )
+    }
+}
 
 export class AboutNav extends React.Component {
     render() {

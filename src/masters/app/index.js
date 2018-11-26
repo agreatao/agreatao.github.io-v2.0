@@ -22,8 +22,8 @@ class App extends React.Component {
         const { show } =this.props.bg;
         const { targetRef } = this.state;
         return (
-            <div className="app" ref="app" style={{width, height}}>
-                <div className={"bg" + (show ? " show" : "")} />
+            <div className={"app" + (show ? " show" : "")} ref="app" style={{width, height}}>
+                <div className={"bg"} />
                 {this.props.children}
                 <TopButton targetRef={targetRef} />
             </div>

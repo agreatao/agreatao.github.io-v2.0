@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Avatar from 'components/avatar';
 import { HomeNav } from 'components/nav';
+import { home_nav } from 'config/nav';
 import moment from 'moment';
 
 class Home extends React.Component {
@@ -24,7 +25,7 @@ class Home extends React.Component {
                         <Avatar onClick={::this.onAvatarClick} active={bg.show} />
                     </div>
                     <div className="nav-wrapper">
-                        <HomeNav />
+                        <HomeNav data={home_nav} />
                     </div>
                 </div>
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
