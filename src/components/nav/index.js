@@ -12,7 +12,7 @@ class NavItemLink extends React.Component {
         return (
             <Link to={to} className={className}>
                 <i className={"icon " + icon} />
-                <text>{title}</text>
+                <div className="text">{title}</div>
             </Link>
         )
     }
@@ -24,7 +24,7 @@ class NavItemA extends React.Component {
         return (
             <a href={to} target="_blank" className={className}>
                 <i className={"icon " + icon} />
-                <text>{title}</text>
+                <div className="text">{title}</div>
             </a>
         )
     }

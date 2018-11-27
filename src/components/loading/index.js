@@ -10,13 +10,13 @@ class Loading extends React.Component {
         return (
             <div className="loading">
                 <div className="loader-wrapper" style={{ marginTop: (browser.height - 40) / 2}}>
-                    <text>L</text>
+                    <span>L</span>
                     <div className="loader">
                         <svg className="circular" viewBox="25 25 50 50">
                             <circle className="path" cx="50" cy="50" r="15" fill="none" strokeWidth="2" strokeMiterlimit="10"></circle>
                         </svg>
                     </div>
-                    <text>ADING...</text>
+                    <span>ADING...</span>
                 </div>
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
             </div>
