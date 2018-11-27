@@ -18,11 +18,6 @@ body {
     height: 100%;
 }
 
-div[data-reactroot] {
-    height: 100%;
-    background: #f6f6f6;
-}
-
 textarea {
     resize: none;
 }
