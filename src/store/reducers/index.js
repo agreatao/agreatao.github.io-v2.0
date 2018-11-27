@@ -1,11 +1,11 @@
 import browser from './browser';
-import issues from './issues';
 import bg from './bg';
+import user from './user';
 
 const reducers = {
     browser,
-    issues,
-    bg
+    bg,
+    user
 };
 
 export default reducers;
