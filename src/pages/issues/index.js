@@ -12,46 +12,48 @@ class Issues extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null
+            issues: null
         }
     }
     componentDidMount() {
-        const { data } = this.props.issues;
-        let result = [];
-        let each = { year: data && data[0] && moment(data[0].created_at).format("YYYY"), list: [] };
-        data && data.forEach((item, index) => {
-            let issue = {
-                title: item.title,
-                createTime: moment(item.created_at),
-                updateTime: moment(item.updated_at),
-                label: item.labels && item.labels[0] && item.labels[0].name,
-                comments: item.comments,
-                id: index
-            };
-            if(each.year != issue.createTime.format("YYYY")) {
-                result.push(each);
-                each = { year: issue.createTime.format("YYYY"), list: [issue] };
-            } else {
-                each.list.push(issue);
-                if(index == data.length - 1) {
-                    result.push(each);
+        const { data } = this.props;
+        if(data) {
+            let { issues } = data;
+            let issuesResult = [];
+            let issuesResultItem = { year: issues && issues[0] && moment(issues[0].created_at).format("YYYY"), list: [] };
+            issues && issues.forEach((item, index) => {
+                let issue = {
+                    title: item.title,
+                    createTime: moment(item.created_at),
+                    updateTime: moment(item.updated_at),
+                    label: item.labels && item.labels[0] && item.labels[0].name,
+                    comments: item.comments,
+                    id: item.number
+                };
+                if(issuesResultItem.year != issue.createTime.format("YYYY")) {
+                    issuesResult.push(issuesResultItem);
+                    issuesResultItem = { year: issue.createTime.format("YYYY"), list: [issue] };
+                } else {
+                    issuesResultItem.list.push(issue);
+                    if(index == issues.length - 1) {
+                        issuesResult.push(issuesResultItem);
+                    }
                 }
-            }
-        }); 
-        this.setState({ data: result });
+            }); 
+            this.setState({ issues: issuesResult });
+        }
     }
     render() {
-        const { browser, issues } = this.props;
+        const { browser, error } = this.props;
         const { width, height } = browser;
-        const { error } = issues;
-        const { data } = this.state;
+        const { issues } = this.state;
         return (
             <div className="issues-page">
                 <CircleNav data={issues_nav} />
                 <div className="issues-wrapper">
                     {
-                        data && !error ?
-                        data.map((item, index) => <div className="year-list" key={index}>
+                        issues && !error ?
+                        issues.map((item, index) => <div className="year-list" key={index}>
                             <div className="year">{item.year}</div>
                             <div className="year-issue-wrapper">
                                 {
@@ -90,5 +92,5 @@ class Issues extends React.Component {
 }
 
 export default connect(
-    state => ({ browser: state.browser, issues: state.issues })
+    state => ({ browser: state.browser })
 )(Issues);
