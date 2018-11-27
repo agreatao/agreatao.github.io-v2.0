@@ -46,7 +46,7 @@ module.exports = {
         ],
         alias: {
             '@': path.join(__dirname, 'src'),
-            'loader': path.join(__dirname, 'src/loader'),
+            'api': path.join(__dirname, 'src/api'),
             'images': path.join(__dirname, 'src/images'),
             'masters': path.join(__dirname, 'src/masters'),
             'pages': path.join(__dirname, 'src/pages'),
