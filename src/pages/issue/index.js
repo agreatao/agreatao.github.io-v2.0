@@ -1,74 +1,87 @@
 import "./style/index.less";
 
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import moment from 'moment';
 
 import { CircleNav } from 'components/nav';
 import { issue_nav } from 'config/nav';
-import marked from 'lib/markdown';
+import http from 'lib/http';
+
+import { Base64 } from 'js-base64';
+import config from 'config'
+
+import IssueWrapper from './issue';
+import CommentsWrapper from './comments';
+import CommentFormWrapper from './comment_form';
+import { scroll } from 'lib/utils';
 
 class Issue extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            issues: null,
+            currentIndex: null,
+            comments: null,
+            reply: null // 回复
+        }
+    }
+    componentDidMount() {
+        const { data, params } = this.props;
+        const { id } = params;
+        if(data && id) {
+            const { issues, comments } = data;
+            if(issues) {
+                let currentIndex = issues.map((item, index) => item.number).indexOf(parseInt(id, 10));
+                this.setState({
+                    issues, currentIndex, comments
+                })
+            }
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        const { data, params } = nextProps;
+        const { id } = params;
+        if(data && id) {
+            const { issues, comments } = data;
+            if(issues) {
+                const currentIndex = issues.map((item, index) => item.number).indexOf(parseInt(id, 10));
+                this.setState({
+                    issues, currentIndex, comments
+                })
+            }
+        }
+    }
+    onReply(body) {
+        body = "> " + body.replace(/(\n)/g, "\n> ") + "\n\n";
+        this.setState({
+            reply: body
+        });
+        scroll({
+            targetPositionY: document.getElementById("app").scrollHeight
+        }, document.getElementById("app"));
+    }
+    onCommentOk(comment) {
+        const {comments} = this.state;
+        comments.push(comment);
+        this.setState({
+            comments
+        })
+    }
     render() {
-        const { data, error } = this.props.issues;
-        const { id } = this.props.params;
-        const issue = data && data[id];
+        const { error, location, params } = this.props;
+        const { issues, comments, currentIndex, commentBody, reply } = this.state;
         return (
             <div className="issue-page">
                 <CircleNav data={issue_nav} />
-                {
-                    issue ?
-                    <div className="issue-wrapper">
-                        <div className="issue-header">
-                            <div className="issue-title">{issue.title}</div>
-                            <div className="issue-others clear">
-                                <div className="fl">
-                                    <div className="calendar">{moment(issue.created_at).format("YYYY-MM-DD HH:mm:ss")}</div>
-                                    <div className="label">{issue.labels[0].name}</div>
-                                </div>
-                                <div className="fr">
-                                    <div className="comments">{issue.comments}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="issue-content">
-                            <div className="markdown-content" dangerouslySetInnerHTML={{__html: marked(issue.body)}} />
-                        </div>
-                        <div className="issue-footer clear">
-                            <div className="fl">
-                                <a className="heart">点赞</a>
-                            </div>
-                            <div className="fr">
-                                <a className="comments-a" href={issue.html_url + '/#new_comment_field'} target="_blank">评论</a>
-                            </div>
-                        </div>
-                        <div className="issue-control clear">
-                            <div className="fl">
-                                {
-                                    parseInt(id, 10) < (data.length - 1) &&
-                                    <Link to={`/issue/${parseInt(id, 10) + 1}`}>上一篇</Link>
-                                }
-                            </div>
-                            <div className="fr">
-                                {
-                                    parseInt(id, 10) > 0 &&
-                                    <Link to={`/issue/${parseInt(id, 10) - 1}`}>下一篇</Link>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    :
-                    <div className="issue-wrapper">
-                        <p className="error">{error}</p>
-                    </div>
-                }
+                <IssueWrapper error={error} issues={issues} currentIndex={currentIndex} />
+                <CommentsWrapper comments={comments} onReply={::this.onReply} />
+                <CommentFormWrapper reply={reply} id={params.id} onCommentOk={::this.onCommentOk} />
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
             </div>
         ) 
     }
 }
 
-export default connect(
-    state => ({ issues: state.issues })
-)(Issue);
+export default Issue;

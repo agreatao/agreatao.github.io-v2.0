@@ -1,21 +1,48 @@
-import React from 'react';
-import { Router, hashHistory, Route, IndexRedirect } from 'react-router';
-import { asyncComponent } from 'lib/async';
+import React from "react";
+import { Router, hashHistory, Route, IndexRedirect } from "react-router";
+import { asyncComponent } from "lib/async";
 
-import Loading from 'components/loading';
+import Loading from "components/loading";
+
+import App from "masters/app";
+import App2 from "masters/app2";
 
 import store from 'store';
-import { receiveIssues } from 'store/actions';
-
-import App from 'masters/app';
-import App2 from 'masters/app2';
+import { readCookieUser } from 'store/actions';
 
 const { dispatch } = store;
 
-const Home = asyncComponent(() => import("pages/home"), <Loading />);
-const Issues = asyncComponent(() => import("pages/issues"), <Loading />, () => dispatch(receiveIssues()));
-const Issue = asyncComponent(() => import("pages/issue"), <Loading />, () => dispatch(receiveIssues()));
-const About = asyncComponent(() => import("pages/about"), <Loading />);
+import { listIssues, listComments } from 'api';
+
+const Home = asyncComponent(() => import("pages/home"), <Loading />, () => {
+    return Promise.all([ dispatch(readCookieUser()) ])
+        .then(([user]) => ({}))
+        .catch(e => { throw '网络链接失败啦'})
+});
+const Issues = asyncComponent(() => import("pages/issues"), <Loading />, () => {
+    return Promise.all([
+        dispatch(readCookieUser()),
+        listIssues()
+    ])
+    .then(([user, issues]) => ({ issues }))
+    .catch(e => { throw '网络链接失败啦'})
+});
+const Issue = asyncComponent(() => import("pages/issue"), <Loading />, ({ query, params }) => {
+    if(params && params.id)
+        return Promise.all([
+            dispatch(readCookieUser()),
+            listIssues(),
+            listComments(params.id)
+        ])
+        .then(([user, issues, comments]) => ({ issues, comments }))
+        .catch(e => { console.log(e); throw '网络链接失败啦'})
+    else Promise.reject("不存在该文章");
+});
+const About = asyncComponent(() => import("pages/about"), <Loading />, () => {
+    return Promise.all([ dispatch(readCookieUser()) ])
+        .then(([user]) => ({}))
+        .catch(e => { throw '网络链接失败啦'})
+});
 
 function createRouter() {
     return (
@@ -24,7 +51,7 @@ function createRouter() {
                 <IndexRedirect to="home" />
                 <Route exact path="home" component={Home} />
                 <Route exact path="issues" component={Issues} />
-                <Route exact path="issue/:id" component={Issue} />
+                <Route exact path="issue/:id" component={Issue} key={new Date().getTime()} />
                 <Route exact path="rss" component={Home} />
             </Route>
             <Route exact path="/" component={App2}>

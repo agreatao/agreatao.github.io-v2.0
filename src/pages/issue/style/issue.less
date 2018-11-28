@@ -1,0 +1,74 @@
+.issue-wrapper {
+    width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    cursor: default;
+    .issue-header,
+    .issue-footer {
+        background: url("~images/separator.png") no-repeat;
+        .issue-title {
+            font-size: 18px;
+            color: #555;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .issue-infos {
+            margin: 10px 0;
+            a {
+                display: inline-block;
+                vertical-align: top;
+                height: 16px;
+                line-height: 16px;
+                padding-left: 22px;
+                color: #333;
+                &+a {
+                    margin-left: 20px;
+                }
+            }
+            .calendar {
+                background: url("~images/sprite.png") no-repeat 0px -48px;
+            }
+            .label {
+                background: url("~images/sprite.png") no-repeat 0px -272px;
+            }
+            .comments {
+                background: url("~images/sprite.png") no-repeat 0px -128px;
+            }
+            .heart {
+                background: url("~images/sprite.png") no-repeat 0px -192px;
+                color: #7b7b7b;
+            }
+            .comments-a {
+                background: url("~images/sprite.png") no-repeat 0px -96px;
+                color: #7b7b7b;
+                &:hover {
+                    color: #333;
+                }
+            }
+            .issue-btn {
+                color: #ccc;
+            }
+        }
+    }
+    .issue-header {
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+        background-position: center bottom;
+    }
+    .issue-footer {
+        padding-top: 40px;
+        margin-top: 20px;
+        background-position: center top;
+    }
+    .issue-content {
+        font-size: 14px;
+        padding-bottom: 20px;
+    }
+    .error {
+        color: #ef7c1e;
+        text-align: center;
+        font-size: 16px;
+    }
+}

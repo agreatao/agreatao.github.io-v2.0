@@ -1,83 +1,10 @@
 .issue-page {
     position: relative;
-    .issue-wrapper {
-        width: 800px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 16px 20px;
-        border-radius: 8px;
-        cursor: default;
-        .issue-header {
-            padding-bottom: 50px;
-            margin-bottom: 20px;
-            background: url("~images/separator.png") no-repeat center bottom;
-            .issue-title {
-                font-size: 18px;
-                color: #555;
-                font-weight: 400;
-            }
-            .issue-others {
-                margin-top: 20px;
-                font-size: 13px;
-                .calendar {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    padding-left: 22px;
-                    background: url("~images/sprite.png") no-repeat 0px -48px;
-                }
-                .label {
-                    display: inline-block;
-                    margin-left: 40px;
-                    height: 16px;
-                    line-height: 16px;
-                    padding-left: 20px;
-                    background: url("~images/sprite.png") no-repeat 0px -272px;
-                }
-                .comments {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    padding-left: 20px;
-                    background: url("~images/sprite.png") no-repeat 0px -128px;
-                    
-                }
-            }
-        }
-        .issue-content {
-            font-size: 14px;
-            padding-bottom: 20px;
-        }
-        .issue-footer {
-            padding-bottom: 60px;
-            background: url("~images/separator.png") no-repeat center bottom;
-            .heart {
-                display: inline-block;
-                height: 16px;
-                padding-left: 22px;
-                background: url("~images/sprite.png") no-repeat 0px -192px;
-                color: #7b7b7b;
-            }
-            .comments-a {
-                display: inline-block;
-                height: 16px;
-                padding-left: 22px;
-                background: url("~images/sprite.png") no-repeat 0px -96px;
-                color: #7b7b7b;
-            }
-        }
-        .issue-control {
-            margin-top: 10px;
-            a {
-                color: #aaa;
-            }
-        }
-        .error {
-            color: #ef7c1e;
-            text-align: center;
-            font-size: 16px;
-        }
-    }
+    
+    @import "./issue.less";
+    @import './comments.less';
+    @import './comment_form.less';
+
     .copyright {
         margin-bottom: 20px;
     }

@@ -16,13 +16,13 @@ class Home extends React.Component {
         this.props.bgToggle();
     }
     render() {
-        const { browser, bg } = this.props;
+        const { browser, app } = this.props;
         const { width, height } = browser;
         return (
             <div className="home-page" style={{width, height}}>
                 <div className="main-wrapper" style={{ paddingTop: (height - 200) / 2}}>
                     <div className="avatar-wrapper">
-                        <Avatar onClick={::this.onAvatarClick} active={bg.show} />
+                        <Avatar onClick={::this.onAvatarClick} active={app.appBgShow} />
                     </div>
                     <div className="nav-wrapper">
                         <HomeNav data={home_nav} />
@@ -37,6 +37,6 @@ class Home extends React.Component {
 import { bgToggle } from 'store/actions';
 
 export default connect(
-    state => ({ browser: state.browser, bg: state.bg }),
+    state => ({ browser: state.browser, app: state.app }),
     dispatch => ({ bgToggle: () => dispatch(bgToggle()) })
 )(Home);

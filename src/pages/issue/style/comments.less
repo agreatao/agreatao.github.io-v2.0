@@ -1,0 +1,216 @@
+.comments-wrapper {
+    width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    .comments-header,
+    .comments-footer {
+        background: url("~images/separator.png") no-repeat;
+        .comments-title {
+            font-size: 18px;
+            color: #555;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .comments-infos {
+            margin: 10px 0;
+            a {
+                display: inline-block;
+                vertical-align: top;
+                height: 16px;
+                line-height: 16px;
+                padding-left: 22px;
+                color: #333;
+                &+a {
+                    margin-left: 20px;
+                }
+            }
+            .calendar {
+                background: url("~images/sprite.png") no-repeat 0px -48px;
+            }
+            .label {
+                background: url("~images/sprite.png") no-repeat 0px -272px;
+            }
+            .comments {
+                background: url("~images/sprite.png") no-repeat 0px -128px;
+            }
+            .heart {
+                background: url("~images/sprite.png") no-repeat 0px -192px;
+                color: #7b7b7b;
+            }
+            .comments-a {
+                background: url("~images/sprite.png") no-repeat 0px -96px;
+                color: #7b7b7b;
+                &:hover {
+                    color: #333;
+                }
+            }
+            .issue-btn {
+                color: #ccc;
+            }
+        }
+    }
+    .comments-header {
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+        background-position: center bottom;
+    }
+    .comments-footer {
+        padding-top: 40px;
+        margin-top: 20px;
+        background-position: center top;
+    }
+    .comments-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        li {
+            margin-bottom: 20px;
+            .user-card {
+                float: left;
+                position: relative;
+                img {
+                    width: 44px;
+                    height: 44px;
+                }
+                &:hover {
+                    .card {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+                .card {
+                    position: absolute;
+                    top: 54px;
+                    left: -12px;
+                    background: #fff;
+                    border: 1px solid #d1d5da;
+                    border-radius: 4px;
+                    z-index: 1100;
+                    width: 320px;
+                    box-shadow: 0 1px 15px rgba(27,31,35,.15)!important;
+                    padding: 16px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all .3s ease-in-out;
+                    &::before, &::after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        left: 24px;
+                        margin-left: 0;
+                        border: 8px solid transparent;
+                        border-bottom-color: rgba(27,31,35,.15);
+                        top: -16px;
+                    }
+                    &::after {
+                        left: 25px;
+                        border-bottom-color: #fff;
+                        top: -14px;
+                    }
+                    a, img {
+                        vertical-align: top;
+                    }
+                    a {
+                        color: #24292e;
+                        margin-left: 16px;
+                        font-size: 14px;
+                        &:hover {
+                            color: #0366d6;
+                        }
+                    }
+                }
+            }
+            .comment-wrapper {
+                border: 1px solid #d1d5da;
+                margin-left: 60px;
+                border-radius: 3px;
+                position: relative;
+                &::before {
+                    border-color: transparent;
+                    border-style: solid solid outset;
+                    content: " ";
+                    display: block;
+                    height: 0;
+                    left: -16px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 100%;
+                    top: 11px;
+                    width: 0;
+                    border-right-color: #d1d5da;
+                    border-width: 8px;
+                }
+                &::after {
+                    border-color: transparent;
+                    border-style: solid solid outset;
+                    content: " ";
+                    display: block;
+                    height: 0;
+                    left: -15px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 100%;
+                    top: 11px;
+                    width: 0;
+                    border-right-color: #f6f8fa;
+                    border-width: 8px;
+                }
+                .header {
+                    background-color: #f6f8fa;
+                    border-bottom: 1px solid #d1d5da;
+                    border-top-left-radius: 3px;
+                    border-top-right-radius: 3px;
+                    color: #586069;
+                    padding: 12px 15px;
+                    a {
+                        display: inline-block;
+                        vertical-align: top;
+                        height: 16px;
+                        line-height: 16px;
+                        color: #333;
+                        &+a {
+                            margin-left: 5px;
+                        }
+                    }
+                    .owner-a {
+                        background-color: #ffbf8a;
+                        border-radius: 3px;
+                        padding: 0 8px;
+                        margin-right: 20px;
+                    }
+                    .reply {
+                        background: url("~images/icons/reply.png") no-repeat;
+                        width: 16px;
+                    }
+                    &:after {
+                        display: inline-block;
+                        visibility: hidden;
+                        height: 0;
+                        content: " ";
+                        clear: both;
+                    }
+                }
+                &.owner {
+                    border-color: #ffcba0;
+                    &:before {
+                        border-right-color: #ffcba0;
+                    }
+                    &:after {
+                        border-right-color: #ffddc1;
+                    }
+                    .header {
+                        background-color: #ffddc1;
+                        border-bottom-color: #ffcba0;
+                    }
+                }
+                .content {
+                    padding: 15px;
+                    font-size: 14px;
+                }
+            }
+        }
+        
+    }
+}
