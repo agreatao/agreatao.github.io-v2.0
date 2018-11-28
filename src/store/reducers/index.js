@@ -1,10 +1,10 @@
 import browser from './browser';
-import bg from './bg';
+import app from './app';
 import user from './user';
 
 const reducers = {
     browser,
-    bg,
+    app,
     user
 };
 
