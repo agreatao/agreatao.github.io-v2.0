@@ -1,6 +1,7 @@
 import "./style/index.less";
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from "react-redux";
 import { Link } from 'react-router';
 
@@ -47,9 +48,9 @@ export class CircleNavConnect extends React.Component {
     }
     render() {
         const { open } = this.state;
-        const { data, bg } = this.props;
-        return (
-            <div className={"circle-nav" + (open ? " open" : "")}>
+        const { data, app } = this.props;
+        return ReactDOM.createPortal(
+            <div className={"circle-nav" + (open ? " open" : "") + (app.appBgShow ? " show-bg" : "")}>
                 <a className="nav-toggle" onClick={::this.onNavToggle}><span className="nav-bars"></span></a>
                 <div className="nav-menu">
                     {
@@ -65,17 +66,17 @@ export class CircleNavConnect extends React.Component {
                             }
                         })
                     }
-                    <Avatar length={34} active={bg.show} onClick={::this.onBgToggle} className={"menu-" + ((data && data.length || 0) + 1)} />
+                    <Avatar length={34} active={app.appBgShow} onClick={::this.onBgToggle} className={"menu-" + ((data && data.length || 0) + 1)} />
                 </div>
             </div>
-        )
+        , document.body)
     }
 }
 
 import { bgToggle } from 'store/actions';
 
 export const CircleNav = connect(
-    state => ({ bg: state.bg }),
+    state => ({ app: state.app }),
     (dispatch) => ({ bgToggle: () => dispatch(bgToggle()) })
 )(CircleNavConnect);
 
