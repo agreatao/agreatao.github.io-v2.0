@@ -1,4 +1,6 @@
-*, :before, :after {
+*,
+:before,
+:after {
     box-sizing: border-box;
 }
 
@@ -12,10 +14,51 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background: #f9f9f9;
 }
 
 #app {
-    height: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+#app::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+}
+
+#app::-webkit-scrollbar-track {
+    border-radius: 3px;
+}
+
+#app::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #aaa;
+    border: 2px solid transparent;
+}
+
+#app::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #aaa;
+}
+
+#app::-webkit-scrollbar-button {
+    background-color: transparent;
+    height: 0;
+    width: 0;
+}
+
+#app.show-bg::-webkit-scrollbar-thumb {
+    background-color: #d18a50;
+}
+
+#app.show-bg::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #d18a50;
 }
 
 textarea {
@@ -54,5 +97,6 @@ a {
 }
 
 /* @import "./font-awesome/font-awesome.css"; */
+
 @import "./raleway//raleway.css";
 @import "./nprogress.less";
