@@ -1,6 +1,7 @@
 import "./style/index.less";
 
 import React from "react";
+import ReactDOM from 'react-dom';
 import { connect } from "react-redux";
 import addEventListener from 'add-dom-event-listener';
 
@@ -33,7 +34,7 @@ class Video extends React.Component {
         const { width, height } = browser;
         const { isPlay } = this.state;
         let scale  = Math.max(width / 1920, height / 1080);
-        return (
+        return ReactDOM.createPortal(
             <div className={"video" + (isPlay ? " play" : "")}>
                 <video
                     className="video-tag"
@@ -50,7 +51,7 @@ class Video extends React.Component {
                 />
                 <div className="video-mask" />
             </div>
-        );
+        , document.body);
     }
 }
 

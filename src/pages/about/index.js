@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import addEventListener from 'add-dom-event-listener';
 
-import Video from 'components/video';
+import Video from 'components/app_video';
 import { AboutNav } from 'components/nav';
 import { about_nav } from 'config/nav';
 import { scroll } from 'lib/utils';
