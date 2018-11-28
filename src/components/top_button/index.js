@@ -1,8 +1,8 @@
 import './style/index.less';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-
 import addEventListener from 'add-dom-event-listener';
 
 import { scroll } from 'lib/utils';
@@ -15,32 +15,38 @@ class TopButton extends React.Component {
             run: false
         }
     }
+    componentDidMount() {
+        this.addScrollListener(this.props.target);
+    }
     componentWillReceiveProps(nextProps) {
-        if(!this.appScroll)
-            this.appScroll = addEventListener(nextProps.targetRef, 'scroll', () => {
-                let scrollTop = nextProps.targetRef.scrollY || nextProps.targetRef.scrollTop;
+        this.addScrollListener(this.props.target);
+    }
+    addScrollListener(target) {
+        if(!this.targetScroll && target) {
+            this.targetScroll = addEventListener(target, 'scroll', () => {
+                let scrollTop = target.scrollY || target.scrollTop;
                 if (scrollTop > 0) {
                     this.setState({ top: false })
                 } else {
                     this.setState({ top: true, run: false })
                 }
             })
+        }
     }
     componentWillUnmount() {
-        this.appScroll && this.appScroll.remove();
+        this.targetScroll && this.targetScroll.remove();
     }
     onScrollTop() {
         this.setState({ run: true });
-        scroll(null, this.props.targetRef);
+        scroll(null, this.props.target);
     }
     render() {
         const { top, run } = this.state;
-        return (
+        const { target } = this.props;
+        return target ? ReactDOM.createPortal(
             <a className={"top-button" + (!top ? ' show' : '') + (run ? ' run' : '')} onClick={::this.onScrollTop}></a>
-        )
+        , document.body) : null;
     }
 }
 
-export default connect(
-    state => ({ browser: state.browser })
-)(TopButton);
+export default TopButton;
