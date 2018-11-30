@@ -80,12 +80,11 @@ export const CircleNav = connect(
     (dispatch) => ({ bgToggle: () => dispatch(bgToggle()) })
 )(CircleNavConnect);
 
-
-export class HomeNav extends React.Component {
+class HomeNavConnect extends React.Component {
     render() {
-        const { data } = this.props;
+        const { data, app } = this.props;
         return (
-            <div className="home-nav">
+            <div className={"home-nav" + (app.appBgShow ? " show-bg" : "")}>
                 {
                     data && data.map((item, index) => {
                         if (item.tag == 'a') {
@@ -103,6 +102,9 @@ export class HomeNav extends React.Component {
         )
     }
 }
+export const HomeNav = connect(
+    state => ({ app: state.app })
+)(HomeNavConnect);
 
 export class AboutNav extends React.Component {
     render() {

@@ -39,7 +39,6 @@ class CommentsWrapper extends React.Component {
                                         </div>
                                         <div className="fr">
                                             <a className="owner-a">作者</a>
-                                            <a className="reply" title="回复" onClick={this.props.onReply && this.props.onReply.bind(null, item.body)}></a>
                                         </div>
                                     </div>
                                     <div className="content">

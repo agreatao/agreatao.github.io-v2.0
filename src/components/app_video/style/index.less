@@ -4,7 +4,9 @@
     top: 0;
     left: 0;
     .video-tag {
+        position: relative;
         overflow: hidden;
+        z-index: 1;
     }
     .video-bg {
         display: block;
@@ -16,6 +18,7 @@
         opacity: 1;
         visibility: visible;
         transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
+        z-index: 2;
     }
     .video-mask {
         position: absolute;
@@ -25,6 +28,7 @@
         height: 100%;
         background: #000;
         opacity: .55;
+        z-index: 3;
     }
     &.play {
         .video-bg {

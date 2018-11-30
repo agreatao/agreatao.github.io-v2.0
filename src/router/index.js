@@ -7,42 +7,27 @@ import Loading from "components/loading";
 import App from "masters/app";
 import App2 from "masters/app2";
 
-import store from 'store';
-import { readCookieUser } from 'store/actions';
-
-const { dispatch } = store;
-
 import { listIssues, listComments } from 'api';
 
-const Home = asyncComponent(() => import("pages/home"), <Loading />, () => {
-    return Promise.all([ dispatch(readCookieUser()) ])
-        .then(([user]) => ({}))
-        .catch(e => { throw '网络链接失败啦'})
-});
+const Home = asyncComponent(() => import("pages/home"), <Loading />);
 const Issues = asyncComponent(() => import("pages/issues"), <Loading />, () => {
     return Promise.all([
-        dispatch(readCookieUser()),
         listIssues()
     ])
-    .then(([user, issues]) => ({ issues }))
+    .then(([issues]) => ({ issues }))
     .catch(e => { throw '网络链接失败啦'})
 });
 const Issue = asyncComponent(() => import("pages/issue"), <Loading />, ({ query, params }) => {
     if(params && params.id)
         return Promise.all([
-            dispatch(readCookieUser()),
             listIssues(),
             listComments(params.id)
         ])
-        .then(([user, issues, comments]) => ({ issues, comments }))
-        .catch(e => { console.log(e); throw '网络链接失败啦'})
+        .then(([issues, comments]) => ({ issues, comments }))
+        .catch(e => { throw '网络链接失败啦'})
     else Promise.reject("不存在该文章");
 });
-const About = asyncComponent(() => import("pages/about"), <Loading />, () => {
-    return Promise.all([ dispatch(readCookieUser()) ])
-        .then(([user]) => ({}))
-        .catch(e => { throw '网络链接失败啦'})
-});
+const About = asyncComponent(() => import("pages/about"), <Loading />);
 
 function createRouter() {
     return (

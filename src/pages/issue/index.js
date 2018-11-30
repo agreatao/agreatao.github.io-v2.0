@@ -8,6 +8,7 @@ import { Link } from 'react-router';
 import { CircleNav } from 'components/nav';
 import { issue_nav } from 'config/nav';
 import http from 'lib/http';
+import { scroll } from 'lib/utils';
 
 import { Base64 } from 'js-base64';
 import config from 'config'
@@ -15,7 +16,6 @@ import config from 'config'
 import IssueWrapper from './issue';
 import CommentsWrapper from './comments';
 import CommentFormWrapper from './comment_form';
-import { scroll } from 'lib/utils';
 
 class Issue extends React.Component {
     constructor(props) {
@@ -23,8 +23,7 @@ class Issue extends React.Component {
         this.state = {
             issues: null,
             currentIndex: null,
-            comments: null,
-            reply: null // 回复
+            comments: null
         }
     }
     componentDidMount() {
@@ -53,31 +52,15 @@ class Issue extends React.Component {
             }
         }
     }
-    onReply(body) {
-        body = "> " + body.replace(/(\n)/g, "\n> ") + "\n\n";
-        this.setState({
-            reply: body
-        });
-        scroll({
-            targetPositionY: document.getElementById("app").scrollHeight
-        }, document.getElementById("app"));
-    }
-    onCommentOk(comment) {
-        const {comments} = this.state;
-        comments.push(comment);
-        this.setState({
-            comments
-        })
-    }
     render() {
         const { error, location, params } = this.props;
-        const { issues, comments, currentIndex, commentBody, reply } = this.state;
+        const { issues, comments, currentIndex } = this.state;
         return (
             <div className="issue-page">
                 <CircleNav data={issue_nav} />
                 <IssueWrapper error={error} issues={issues} currentIndex={currentIndex} />
-                <CommentsWrapper comments={comments} onReply={::this.onReply} />
-                <CommentFormWrapper reply={reply} id={params.id} onCommentOk={::this.onCommentOk} />
+                <CommentsWrapper comments={comments} />
+                <CommentFormWrapper id={params.id} />
                 <div className="copyright">&copy; {moment().format("YYYY")} Designed By Ao</div>
             </div>
         ) 
