@@ -30,30 +30,3 @@ export const listComments = id => {
         }
     });
 };
-
-export const createComment = (id, comments, aut) => {
-    return http.post(
-        `/issues/${id}/comments`,
-        {
-            body: comments
-        },
-        {
-            headers: {
-                Authorization:
-                    "Basic " + Base64.encode(`${aut.username}:${aut.password}`)
-            }
-        }
-    );
-};
-
-export const getUserByAuth = auth => {
-    return http.get("/user", {
-        headers: {
-            Authorization: "Basic " + auth
-        }
-    });
-};
-
-export const getUser = (username, password) => {
-    return getUserByAuth(Base64.encode(`${aut.username}:${aut.password}`));
-};

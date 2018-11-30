@@ -3,7 +3,7 @@ const config = {
     repo       : 'agreatao.github.io',
     title      : '骜 - 做一个了不起的人',
     titleLoad  : '骜 - 正在加载...',
-    token      : '0ff406fe0880ab03dba53cc0dbc426e366e9387b'
+    token      : '313ec5d8fbc25c236782167c99f51033e5891540'
 }
 
 module.exports = {
